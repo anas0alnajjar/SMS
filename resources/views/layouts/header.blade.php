@@ -3,12 +3,8 @@
         <ul class="navbar-nav">
             <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i
                         class="bi bi-list"></i> </a> </li>
-            <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Home</a> </li>
-            <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Contact</a> </li>
         </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
-            <li class="nav-item"> <a class="nav-link" data-widget="navbar-search" href="#" role="button"> <i
-                        class="bi bi-search"></i> </a> </li> <!--end::Navbar Search-->
             <!--begin::Messages Dropdown Menu-->
             <li class="nav-item dropdown"> <a class="nav-link" data-bs-toggle="dropdown" href="#"> <i
                         class="bi bi-chat-text"></i> <span class="navbar-badge badge text-bg-danger">3</span> </a>
@@ -87,12 +83,12 @@
             <li class="nav-item dropdown user-menu"> <a href="#" class="nav-link dropdown-toggle"
                     data-bs-toggle="dropdown"> <img src="../../dist/assets/img/user2-160x160.jpg"
                         class="user-image rounded-circle shadow" alt="User Image"> <span
-                        class="d-none d-md-inline">Alexander Pierce</span> </a>
+                        class="d-none d-md-inline">{{ Auth::user()->name }}</span> </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <!--begin::User Image-->
                     <li class="user-header text-bg-primary"> <img src="../../dist/assets/img/user2-160x160.jpg"
                             class="rounded-circle shadow" alt="User Image">
                         <p>
-                            Alexander Pierce - Web Developer
+                            {{ Auth::user()->name }} - Web Developer
                             <small>Member since Nov. 2023</small>
                         </p>
                     </li> <!--end::User Image--> <!--begin::Menu Body-->
@@ -112,7 +108,7 @@
     </div> <!--end::Container-->
 </nav> <!--end::Header--> <!--begin::Sidebar-->
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-    <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link">
+    <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="#" class="brand-link">
             <!--begin::Brand Image--> <img src="../../dist/assets/img/AdminLTELogo.png" alt="AdminLTE Logo"
                 class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span
                 class="brand-text fw-light">HopeSchool</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div>
@@ -121,14 +117,38 @@
         <nav class="mt-2"> <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu"
                 data-accordion="false">
-                <li class="nav-item"> <a href="{{ url('admin/dashboard') }}" class="nav-link"> <i
-                            class="nav-icon bi bi-speedometer"></i>
-                        <p>Dashboard</p>
-                    </a> </li>
+                @if (Auth::user()->user_type == 1)
+                    <li class="nav-item"> <a href="{{ url('admin/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif"> <i
+                                class="nav-icon bi bi-speedometer"></i>
+                            <p>Dashboard
+                            </p>
+                        </a> </li>
+                    <li class="nav-item">
+                        <a href="{{ url('admin/admin/list') }}" class="nav-link @if(Request::segment(2)=='admin') active @endif">
+                            <i class="nav-icon bi bi-people"></i>
+                            <p>Admin</p>
+                        </a>
+                    </li>
+                @elseif(Auth::user()->user_type == 2)
+                    <li class="nav-item"> <a href="{{ url('teacher/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif"> <i
+                                class="nav-icon bi bi-speedometer"></i>
+                            <p>Dashboard</p>
+                        </a> </li>
+                @elseif(Auth::user()->user_type == 3)
+                    <li class="nav-item"> <a href="{{ url('student/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif"> <i
+                                class="nav-icon bi bi-speedometer"></i>
+                            <p>Dashboard</p>
+                        </a> </li>
+                @elseif(Auth::user()->user_type == 4)
+                    <li class="nav-item"> <a href="{{ url('student/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif"> <i
+                                class="nav-icon bi bi-speedometer"></i>
+                            <p>Dashboard</p>
+                        </a> </li>
+                @endif
                 <li class="nav-item">
-                    <a href="{{ url('admin/admin/list') }}" class="nav-link">
+                    <a href="{{ url('logout') }}" class="nav-link">
                         <i class="nav-icon bi bi-people"></i>
-                        <p>Admin</p>
+                        <p>Logout</p>
                     </a>
                 </li>
 

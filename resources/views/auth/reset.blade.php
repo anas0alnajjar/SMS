@@ -5,11 +5,13 @@
     <!-- Meta tags and other links -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ __('messages.login_title') }}</title>
+    <title>{{ __('messages.reset_password_title') }}</title>
 
     <!-- Fonts and other CSS links -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
         integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/amiri@1.0.4/index.css" rel="stylesheet"
+        integrity="sha384-Vfzt2z3w/9P/C4Um2+QNF1jvT1D5+JoQPB7O6/+E9+0/qOj2zNEw7vA/8tGVtTkm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
         integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
@@ -34,42 +36,33 @@
         </div>
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">{{ __('messages.sign_in_to_start') }}</p>
                 @include('_message')
-                <form id="loginForm" method="post" action="{{ url('login') }}">
+                <form id="resetForm" method="post" action="{{ url('reset/' . $user->remember_token) }}">
                     {{ csrf_field() }}
                     <div class="input-group mb-3" style="direction: ltr">
-                        <input type="email" name="email" class="form-control"
-                            placeholder="{{ __('messages.email') }}" required>
+                        <input type="password" name="password" class="form-control"
+                            placeholder="{{ __('messages.newpassword') }}" required>
                         <div class="input-group-text">
-                            <span class="bi bi-envelope"></span>
+                            <span class="bi bi-lock-fill"></span>
                         </div>
                     </div>
                     <div class="input-group mb-3" style="direction: ltr">
-                        <input type="password" class="form-control" placeholder="{{ __('messages.password') }}"
-                            name="password" required>
+                        <input type="password" name="confirm_password" class="form-control"
+                            placeholder="{{ __('messages.confirm_password') }}" required>
                         <div class="input-group-text">
                             <span class="bi bi-lock-fill"></span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault"
-                                    name="remember">
-                                <label class="form-check-label"
-                                    for="flexCheckDefault">{{ __('messages.remember_me') }}</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">{{ __('messages.sign_in') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('messages.recoveryNow') }}</button>
                             </div>
                         </div>
                     </div>
                 </form>
-                <p class="mb-1">
-                    <a id="forget_pass" href="{{ url('forgot-password') }}">{{ __('messages.forgot_password') }}</a>
+                <p class="mt-2 mx-auto text-center">
+                    <a id="forget_pass" href="{{ url('/') }}">{{ __('messages.loginPage') }}</a>
                 </p>
                 <div class="language-switcher">
                     <a href="?lang=en">
@@ -95,7 +88,7 @@
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="{{ asset('dist/js/login.js') }}"></script>
+    <script src="{{ asset('dist/js/reset.js') }}"></script>
 </body>
 
 </html>

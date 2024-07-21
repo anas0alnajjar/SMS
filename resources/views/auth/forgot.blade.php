@@ -10,6 +10,8 @@
     <!-- Fonts and other CSS links -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
         integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/amiri@1.0.4/index.css" rel="stylesheet"
+        integrity="sha384-Vfzt2z3w/9P/C4Um2+QNF1jvT1D5+JoQPB7O6/+E9+0/qOj2zNEw7vA/8tGVtTkm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
         integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
@@ -23,6 +25,22 @@
     <style>
         body {
             direction: {{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }};
+            font-family: '{{ app()->getLocale() == "ar" ? "Amiri, serif" : "Source Sans 3, sans-serif" }}';
+        }
+
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .language-switcher a {
+            margin: 0 0.5rem;
+        }
+
+        .language-switcher img {
+            width: 30px;
+            height: 20px;
         }
     </style>
 </head>
@@ -34,9 +52,8 @@
         </div>
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">{{ __('messages.sign_in_to_start') }}</p>
                 @include('_message')
-                <form id="loginForm" method="post" action="{{ url('login') }}">
+                <form id="forgetForm" method="post" action="{{ url('forgot-password') }}">
                     {{ csrf_field() }}
                     <div class="input-group mb-3" style="direction: ltr">
                         <input type="email" name="email" class="form-control"
@@ -45,31 +62,16 @@
                             <span class="bi bi-envelope"></span>
                         </div>
                     </div>
-                    <div class="input-group mb-3" style="direction: ltr">
-                        <input type="password" class="form-control" placeholder="{{ __('messages.password') }}"
-                            name="password" required>
-                        <div class="input-group-text">
-                            <span class="bi bi-lock-fill"></span>
-                        </div>
-                    </div>
                     <div class="row">
-                        <div class="col-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault"
-                                    name="remember">
-                                <label class="form-check-label"
-                                    for="flexCheckDefault">{{ __('messages.remember_me') }}</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
+                        <div class="col-12">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">{{ __('messages.sign_in') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('messages.recovery') }}</button>
                             </div>
                         </div>
                     </div>
                 </form>
-                <p class="mb-1">
-                    <a id="forget_pass" href="{{ url('forgot-password') }}">{{ __('messages.forgot_password') }}</a>
+                <p class="mt-2 mx-auto text-center">
+                    <a id="forget_pass" href="{{ url('/') }}">{{ __('messages.loginPage') }}</a>
                 </p>
                 <div class="language-switcher">
                     <a href="?lang=en">
@@ -95,7 +97,7 @@
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="{{ asset('dist/js/login.js') }}"></script>
+    <script src="{{ asset('dist/js/forgot.js') }}"></script>
 </body>
 
 </html>

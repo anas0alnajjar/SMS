@@ -82,7 +82,7 @@
                             <div class="direct-chat-messages"> <!-- Message. Default to the start -->
                                 <div class="direct-chat-msg">
                                     <div class="direct-chat-infos clearfix"> <span class="direct-chat-name float-start">
-                                            {{Auth::user()->name}}
+                                            Alexander Pierce
                                         </span> <span class="direct-chat-timestamp float-end">
                                             23 Jan 2:00 pm
                                         </span> </div> <!-- /.direct-chat-infos --> <img class="direct-chat-img" src="../../dist/assets/img/user1-128x128.jpg" alt="message user image"> <!-- /.direct-chat-img -->
@@ -102,7 +102,7 @@
                                 </div> <!-- /.direct-chat-msg --> <!-- Message. Default to the start -->
                                 <div class="direct-chat-msg">
                                     <div class="direct-chat-infos clearfix"> <span class="direct-chat-name float-start">
-                                        {{Auth::user()->name}}
+                                            Alexander Pierce
                                         </span> <span class="direct-chat-timestamp float-end">
                                             23 Jan 5:37 pm
                                         </span> </div> <!-- /.direct-chat-infos --> <img class="direct-chat-img" src="../../dist/assets/img/user1-128x128.jpg" alt="message user image"> <!-- /.direct-chat-img -->
