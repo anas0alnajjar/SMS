@@ -6,6 +6,7 @@
         </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
             <!--begin::Messages Dropdown Menu-->
+            
             <li class="nav-item dropdown"> <a class="nav-link" data-bs-toggle="dropdown" href="#"> <i
                         class="bi bi-chat-text"></i> <span class="navbar-badge badge text-bg-danger">3</span> </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <a href="#" class="dropdown-item">
@@ -76,6 +77,32 @@
                     </a>
                 </div>
             </li> <!--end::Notifications Dropdown Menu--> <!--begin::Fullscreen Toggle-->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-bs-toggle="dropdown" href="#">
+                    <i class="bi bi-translate"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                    <span class="dropdown-item dropdown-header">Languages</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="?lang=en" class="dropdown-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" 
+                             alt="English" 
+                             class="img-fluid" 
+                             style="max-width: 30px; max-height: 30px;">
+                        English
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="?lang=ar" class="dropdown-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/800px-Flag_of_Saudi_Arabia.svg.png?20230323235445" 
+                             alt="Arabic" 
+                             class="img-fluid" 
+                             style="max-width: 30px; max-height: 30px;">
+                        Arabic
+                    </a>
+                </div>
+            </li>
+            
+             
             <li class="nav-item"> <a class="nav-link" href="#" data-lte-toggle="fullscreen"> <i
                         data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i> <i data-lte-icon="minimize"
                         class="bi bi-fullscreen-exit" style="display: none;"></i> </a> </li>

@@ -4,6 +4,7 @@ return [
     'login_title' => 'Login',
     'sign_in_to_start' => 'Sign in to start your session',
     'email' => 'Email',
+    'name' => 'Name',
     'password' => 'Password',
     'remember_me' => 'Remember Me',
     'sign_in' => 'Sign In',
@@ -23,5 +24,9 @@ return [
     'password_changed' => 'Password Changed successfully',
     'passwords_do_not_match' => 'Paswords do not match',
     'password_reset_email_sent' => 'An email will be sent to you if it is present in the system.',
+    'addAdmin' => 'Add Admin',
+    'upload' => 'Upload',
+    'add' => 'Add',
+    'admin_created_successfully' => 'Admin successfully created.',
 
 ];

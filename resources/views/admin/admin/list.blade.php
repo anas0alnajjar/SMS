@@ -9,9 +9,15 @@
                 <div class="col-sm-6">
                     <h3 class="mb-0">Admin List</h3>
                 </div>
+                <div class="col-sm-6" style="text-align:right;">
+                    <a href="{{url('admin/admin/add')}}" class="btn btn-dark btn-sm">{{ __('messages.addAdmin') }}</a>
+                </div>
             </div> <!--end::Row-->
+            
         </div> <!--end::Container-->
+        
     </div> <!--end::App Content Header--> <!--begin::App Content-->
+    @include('_message')
     <div class="app-content"> <!--begin::Container-->
         <div class="container-fluid"> <!--begin::Row-->
             <div class="row">

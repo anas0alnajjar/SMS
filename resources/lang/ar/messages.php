@@ -4,6 +4,7 @@ return [
     'login_title' => 'تسجيل الدخول',
     'sign_in_to_start' => 'سجل الدخول لبدء جلستك',
     'email' => 'البريد الإلكتروني',
+    'name' => 'الاسم',
     'password' => 'كلمة المرور',
     'remember_me' => 'تذكرني',
     'sign_in' => 'تسجيل الدخول',
@@ -23,4 +24,8 @@ return [
     'password_changed' => 'تم تغيير كلمة المرور بنجاح',
     'passwords_do_not_match' => 'كلمات المرور غير متطابقة',
     'password_reset_email_sent' => 'سيتم إرسال بريد إلكتروني إليك إذا كان موجودًا في النظام.',
+    'addAdmin' => 'إضافة آدمن',
+    'upload' => 'تحميل',
+    'add' => 'إضافة',
+    'admin_created_successfully' => 'تم إنشاء المسؤول بنجاح.',
 ];
