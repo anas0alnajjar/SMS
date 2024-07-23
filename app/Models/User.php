@@ -42,11 +42,29 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+
+    static public function getAdmin()
+    {
+        $query = self::select('users.*')
+            ->where('users.user_type', '=', 1);
+
+        if ($search = request()->get('search')) {
+            $query->where(function ($query) use ($search) {
+                $query->where('users.name', 'LIKE', "%$search%")
+                    ->orWhere('users.email', 'LIKE', "%$search%");
+            });
+        }
+
+        return $query->orderBy('users.id', 'desc')
+            ->paginate(10);
+    }
+
     static public function getEmailSingle($email)
     {
         return self::where('email', '=', $email)->first();
     }
-    
+
     static public function getToken($remember_token)
     {
         return self::where('remember_token', '=', $remember_token)->first();

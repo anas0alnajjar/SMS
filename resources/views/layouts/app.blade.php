@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en"> <!--begin::Head-->
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ (App::isLocale('ar') ? 'rtl' : 'ltr') }}">
+
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>{{!empty($header_title) ? $header_title : '' }} - School</title><!--begin::Primary Meta Tags-->
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="AdminLTE v4 | Dashboard">
     <meta name="author" content="ColorlibHQ">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
     <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
@@ -18,13 +21,29 @@
 
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    @if(app()->getLocale() == 'ar')
     <style>
-
-        main {
-            direction: {{ app()->getLocale() == 'ar' ? 'rtl !important' : 'ltr !important' }};
-            text-align: {{ app()->getLocale() == 'ar' ? 'right !important' : 'left !important' }};
+         main, .modal {
+            direction: rtl;
+            text-align: right;
+        }
+        /* الشريط الجانبي عند استخدام اللغة العربية */
+        .sidebar-collapse:not(.sidebar-mini) .app-sidebar {
+            margin-right: calc(var(--lte-sidebar-width)* -1) !important;
+            margin-left: unset !important;
+        }
+        .dropdown-menu-end[data-bs-popper] {
+            left: 0 !important;
+            right: auto;
+        }
+        .card-title{
+            float: right;
         }
     </style>
+    @endif
+
     @yield('style')
 </head>
 <!--end::Head--> <!--begin::Body-->
@@ -145,6 +164,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js" integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY=" crossorigin="anonymous"></script> <!-- jsvectormap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         const visitorsData = {
             US: 398, // USA
@@ -254,6 +275,9 @@
         );
         sparkline3.render();
     </script> <!--end::Script-->
+    <script>
+        
+    </script>
     @yield('script')
 </body><!--end::Body-->
 
